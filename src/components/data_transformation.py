@@ -16,7 +16,7 @@ from src.utils import save_object
 
 @dataclass
 class DataTransformationConfig:
-    preprocessor_obj_file_path=os.path.join('artifacts',"proprocessor.pkl")
+    preprocessor_obj_file_path=os.path.join('artifacts',"proprocessor.pkl")#This is pipeline
 
 class DataTransformation:
     def __init__(self):
@@ -24,7 +24,7 @@ class DataTransformation:
 
     def get_data_transformer_object(self):
         '''
-        This function si responsible for data trnasformation
+        This function is responsible for data transformation.
         
         '''
         try:
@@ -37,15 +37,15 @@ class DataTransformation:
                 "test_preparation_course",
             ]
 
-            num_pipeline= Pipeline(
+            num_pipeline= Pipeline(#Numerical pipeline
                 steps=[
                 ("imputer",SimpleImputer(strategy="median")),
                 ("scaler",StandardScaler())
-
+#here we are creating a pipeline named standard scaler
                 ]
             )
 
-            cat_pipeline=Pipeline(
+            cat_pipeline=Pipeline(#categoraical pipeline.
 
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")),
